@@ -1,0 +1,47 @@
+{
+  "_comment": "Cấu hình quy tắc kiểm tra HSBA — Trung tâm Y tế Thủy Nguyên",
+  "_doc": "Mỗi rule có: enabled (bật/tắt), suppress_type (lọc thieu_sot theo cause), suppresses_canonical_ids (ẩn hoàn toàn khỏi bieu_mau). Khi disabled: thieu_sot KHÔNG bị lọc, bieu_mau KHÔNG bị suppress.",
+  "version": "1.4",
+  "hospital": "Trung tâm Y tế Thủy Nguyên",
+  "updated": "2026-06-12",
+  "ignore_rules": [
+    {
+      "id": "dien_bien_cuoi_tuan_nghi_le",
+      "enabled": true,
+      "description": "Y lệnh ngày cuối tuần / nghỉ lễ không có nhận xét diễn biến (bệnh nhân ổn định)",
+      "reason": "Quy định cho phép kê thuốc trước cho ngày cuối tuần / nghỉ lễ đối với bệnh nhân ổn định; những ngày này chỉ cần ghi y lệnh thuốc, không bắt buộc nhận xét diễn biến. Chỉ loại trừ tiêu chí theo dõi diễn biến (DD04) khi thiếu sót rơi đúng vào ngày T7/CN/lễ.",
+      "suppress_type": "policy_exception",
+      "thieu_sot_keyword": "cuối tuần",
+      "applies_to_criteria": ["DD04"],
+      "weekend_markers": ["t7", "cn", "thứ 7", "chủ nhật", "cuối tuần", "nghỉ lễ", "weekend"],
+      "suppresses_canonical_ids": []
+    },
+    {
+      "id": "trang_bia_ra_vien",
+      "enabled": true,
+      "description": "Trường 'Ra viện' bỏ trống trên trang bìa",
+      "reason": "TTYT không yêu cầu điền trường Ra viện trên trang bìa — được điền sau tại phòng lưu trữ",
+      "suppress_type": "policy_exception",
+      "thieu_sot_keyword": "Ra viện\" bỏ trống trên trang bìa",
+      "suppresses_canonical_ids": ["MS_01_BV_01_COVER"]
+    },
+    {
+      "id": "ecg_can_nang_chieu_cao",
+      "enabled": true,
+      "description": "Cân nặng và chiều cao bỏ trống trên phiếu điện tim",
+      "reason": "Mẫu phiếu điện tim tại TTYT không có trường cân nặng/chiều cao — không yêu cầu điền",
+      "suppress_type": "form_not_applicable",
+      "thieu_sot_keyword": "Cân nặng và chiều cao bỏ trống",
+      "suppresses_canonical_ids": ["MS_12_BV02"]
+    },
+    {
+      "id": "so_luu_tru",
+      "enabled": true,
+      "description": "Trường 'Số lưu trữ' bỏ trống trên trang bìa và bệnh án",
+      "reason": "Số lưu trữ do phòng KPCB điền sau khi bệnh nhân ra viện — không yêu cầu bác sĩ điền",
+      "suppress_type": "policy_exception",
+      "thieu_sot_keyword": "Số lưu trữ",
+      "suppresses_canonical_ids": []
+    }
+  ]
+}

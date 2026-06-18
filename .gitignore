@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.venv/
+venv/
+.env
+.env.*
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+.vite/
+coverage/
+
+# App runtime / local data
+logs/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+outputs/
+output/
+archive/
+ocr-cache/
+
+# PHI / HSBA raw local artifacts
+*.raw.json
+*.digest.txt
+/tmp/data-*.js
+data-20*.js
+*.docx
+*.pdf
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets
+*.key
+*.pem
+*.p12
+settings.json
